@@ -20,6 +20,16 @@ and show you on the console whether it succeeded.
 make build run
 ```
 
+## Targets available?
+
+```
+make build
+make run
+make clean
+```
+
+
+
 ## What still needs to be done?
 
 - Enable extracting the generated .deb and/or the generated source tarball.
