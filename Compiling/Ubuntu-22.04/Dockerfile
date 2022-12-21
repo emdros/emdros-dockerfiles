@@ -48,7 +48,9 @@ RUN apt-get install -y \
         nodejs \
 	npm \
    && apt-get install -y \
-        php-dev 
+        php-dev
+
+RUN npm install -g node-gyp
 
 # Add locally compiled version of SWIG
 ADD https://raw.githubusercontent.com/emdros/emdros/master/SWIG/download_and_make_local_swig.sh /root/
