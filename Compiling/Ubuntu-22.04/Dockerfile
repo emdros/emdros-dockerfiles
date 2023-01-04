@@ -54,12 +54,11 @@ RUN apt-get install -y \
 
 # Add locally compiled version of SWIG
 ADD https://raw.githubusercontent.com/emdros/emdros/master/SWIG/download_and_make_local_swig.sh /root/
-RUN bash /root/download_and_make_local_swig.sh 4.1.1 \
-    && bash echo 'PATH=/root/opt/bin:$PATH' >> /root/.bashrc
+RUN bash /root/download_and_make_local_swig.sh 4.1.1 
 
 # Add script to build a .deb
 ADD https://raw.githubusercontent.com/emdros/emdros/master/build-deb.sh ./root/
 
-CMD bash /root/build-deb.sh
+CMD export PATH=/root/opt/bin:${PATH} &&  bash /root/build-deb.sh
 
 
