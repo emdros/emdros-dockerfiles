@@ -49,6 +49,7 @@ RUN bash /root/download_and_make_local_swig.sh 4.1.1
 
 ADD https://raw.githubusercontent.com/emdros/emdros/master/build-deb.sh ./root/
 
-CMD bash /root/build-deb.sh
+CMD export PATH="/root/opt/bin:${PATH}" \
+    && bash /root/build-deb.sh
 
 
