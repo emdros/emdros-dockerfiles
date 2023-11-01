@@ -1,23 +1,28 @@
-# Download and compile this Emdros version from the
-# https://emdros.org/downloads/emdros/
-# directory.
-#
-# (You can go there and see which versions are available.)
-EMDROS_VERSION = 3.8.0
-
-
 CLEANFILES = *~
 
+CONTAINER_NAME = compile_emdros_alphine_latest
+
+OUTPUT_DIR = /tmp/emdros_deb_aline_latest
 
 
-all:
+all: build run
 
 
 build:
-	podman build --build-arg emdros_version=$(EMDROS_VERSION) -t compile_emdros_alpine .
+	podman build -t $(CONTAINER_NAME) . 
 
 run:
-	podman run -t compile_emdros_alpine
+	podman run --env=OUTPUTDIR=$(OUTPUT_DIR) -t $(CONTAINER_NAME)
+	podman cp $(CONTAINER_NAME):$(OUTPUT_DIR) - | tar xfv -
+
+
+run2:
+	podman run --detach --tty --env=OUTPUTDIR=$(OUTPUT_DIR) -t $(CONTAINER_NAME) /bin/bash
+
 
 clean:
 	rm -f $(CLEANFILES)
+
+
+distclean: clean
+	rm -rf emdros_deb/
