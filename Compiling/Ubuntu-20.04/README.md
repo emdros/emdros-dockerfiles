@@ -7,11 +7,6 @@ file.
 
 Tested on Fedora Linux.
 
-## Useful?
-
-Currently, the generated container is only able to compile the .deb
-and show you on the console whether it succeeded.
-
 ## How to use?
 
 1. Install podman or docker.
@@ -23,15 +18,18 @@ make build run
 ## Targets available?
 
 ```
+make all
 make build
 make run
 make clean
+make distclean
 ```
 
+## Outputs
 
+A directory containing the build .deb of Emdros:
 
-## What still needs to be done?
-
-- Enable extracting the generated .deb and/or the generated source tarball.
-
+```
+./emdros_deb_ubuntu_2004/emdros*.deb
+```
 
