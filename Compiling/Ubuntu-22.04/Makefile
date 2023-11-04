@@ -2,7 +2,7 @@ CLEANFILES = *~
 
 CONTAINER_NAME = compile_emdros_ubuntu_2204
 
-OUTPUT_DIR = /tmp/emdros_deb_ubuntu_2204
+OUTPUT_DIR = /tmp/emdros_deb_ubuntu_2204/
 
 
 all: build run
