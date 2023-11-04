@@ -46,6 +46,7 @@ RUN apt-get install -y \
 	mono-tools-devel \
    && apt-get install -y \
         nodejs \
+	node-gyp \
 	npm \
    && apt-get install -y \
         php-dev
