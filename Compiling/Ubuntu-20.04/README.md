@@ -18,11 +18,14 @@ make build run
 ## Targets available?
 
 ```
-make all
-make build
-make run
-make clean
-make distclean
+make all         -- Runs all the requisite targets
+make build       -- Build an image
+make run         -- Run the actual compilation
+make cp          -- Copy the built .deb into ./emdros_deb_ubuntu_2004/
+make rm          -- Remove the container
+make rmi         -- Remove the image
+make clean       -- Clean up most things, including running target rmi
+make distclean   -- Clean up everything
 ```
 
 ## Outputs
