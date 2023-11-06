@@ -4,7 +4,10 @@ IMAGE_NAME = localhos/compile_emdros_ubuntu_2204_image
 
 CONTAINER_NAME = compile_emdros_ubuntu_2204_container
 
-OUTPUT_DIR = /tmp/emdros_deb_ubuntu_2204/
+
+# Inside the container
+OUTPUT_DIR_HOST = emdros_deb_ubuntu_2204
+OUTPUT_DIR_CONTAINER = /tmp/$(OUTPUT_DIR_HOST)
 
 
 all: rmi build run cp stop rm
@@ -14,10 +17,10 @@ build:
 	podman build -t $(IMAGE_NAME) . 
 
 run:
-	podman run --env 'OUTPUT_DIR=$(OUTPUT_DIR)' --name $(CONTAINER_NAME) $(IMAGE_NAME)
+	podman run --env 'OUTPUT_DIR=$(OUTPUT_DIR_CONTAINER)' --name $(CONTAINER_NAME) $(IMAGE_NAME)
 
 cp:
-	podman cp $(CONTAINER_NAME):$(OUTPUT_DIR) - | tar xfv -
+	podman cp $(CONTAINER_NAME):$(OUTPUT_DIR_CONTAINER) - | tar xfv -
 
 stop:
 	-podman stop $(CONTAINER_NAME)
@@ -32,4 +35,6 @@ clean: rmi
 	rm -f $(CLEANFILES)
 
 distclean: clean
-	rm -rf emdros_deb/
+	rm -rf $(OUTPUT_DIR_HOST)/
+
+
