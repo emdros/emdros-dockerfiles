@@ -1,21 +1,34 @@
 CLEANFILES = *~
 
-CONTAINER_NAME = compile_emdros_ubuntu_2004
+IMAGE_NAME = localhos/compile_emdros_ubuntu_2004_image
 
-OUTPUT_DIR = /tmp/emdros_deb_ubuntu_2004
+CONTAINER_NAME = compile_emdros_ubuntu_2004_container
+
+OUTPUT_DIR = /tmp/emdros_deb_ubuntu_2004/
 
 
-all: build run
+all: rmi build run cp stop rm
 
 
 build:
-	podman build -t $(CONTAINER_NAME) . 
+	podman build -t $(IMAGE_NAME) . 
 
 run:
-	podman run --env=OUTPUTDIR=$(OUTPUT_DIR) -t $(CONTAINER_NAME)
+	podman run --env 'OUTPUT_DIR=$(OUTPUT_DIR)' --name $(CONTAINER_NAME) $(IMAGE_NAME)
+
+cp:
 	podman cp $(CONTAINER_NAME):$(OUTPUT_DIR) - | tar xfv -
 
-clean:
+stop:
+	-podman stop $(CONTAINER_NAME)
+
+rm:
+	podman rm $(CONTAINER_NAME)
+
+rmi:
+	-podman rmi --force $(IMAGE_NAME)
+
+clean: rmi
 	rm -f $(CLEANFILES)
 
 distclean: clean
