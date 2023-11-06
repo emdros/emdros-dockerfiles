@@ -10,9 +10,11 @@ Tested on Fedora Linux.
 ## How to use?
 
 1. Install podman or docker.
-2. Run in the shell:
+2. If you installed podman, do `alias docker=podman`, or change the
+   DOCKER variable in the Makefile.
+3. Run in the shell:
 ```
-make build run
+make all
 ```
 
 ## Targets available?
