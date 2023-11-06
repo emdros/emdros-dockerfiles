@@ -51,8 +51,6 @@ RUN apt-get install -y \
    && apt-get install -y \
         php-dev
 
-# RUN npm install -g node-gyp
-
 # Add locally compiled version of SWIG
 ADD https://raw.githubusercontent.com/emdros/emdros/master/SWIG/download_and_make_local_swig.sh /root/
 RUN bash /root/download_and_make_local_swig.sh 4.1.1 
@@ -60,8 +58,9 @@ RUN bash /root/download_and_make_local_swig.sh 4.1.1
 # Add script to build a .deb
 ADD https://raw.githubusercontent.com/emdros/emdros/master/build-deb.sh ./root/
 
-CMD export PATH=/root/opt/bin:${PATH} && bash /root/build-deb.sh && \
-    install -m 755 -d ${OUTPUT_DIR} && \
+CMD export PATH=/root/opt/bin:${PATH} && \
+    bash /root/build-deb.sh && \
+    install -m 755 -d ${OUTPUT_DIR}/ && \
     install -m 644 /root/build/emdros-build-2/emdros/emdros*.deb ${OUTPUT_DIR}/
 
 
