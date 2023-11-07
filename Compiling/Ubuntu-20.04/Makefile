@@ -23,6 +23,8 @@ EMDROS_CONFIGURE_SWITCHES = \
      --with-swig-language-java=no \
      --with-swig-language-python=no \
      --with-swig-language-python3=no \
+     --with-swig-language-php7=no \
+     --with-swig-language-php8=no \
      --with-swig-language-nodejs=yes
 
 
