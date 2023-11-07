@@ -59,6 +59,7 @@ RUN bash /root/download_and_make_local_swig.sh 4.1.1
 ADD https://raw.githubusercontent.com/emdros/emdros/master/build-deb.sh ./root/
 
 CMD export PATH=/root/opt/bin:${PATH} && \
+    export EMDROS_CONFIGURE_SWITCHES && \
     bash /root/build-deb.sh && \
     install -m 755 -d ${OUTPUT_DIR}/ && \
     install -m 644 /root/build/emdros-build-2/emdros/emdros*.deb ${OUTPUT_DIR}/
