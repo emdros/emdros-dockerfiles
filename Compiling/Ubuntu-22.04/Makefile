@@ -2,7 +2,7 @@ DOCKER = podman
 
 CLEANFILES = *~
 
-IMAGE_NAME = localhos/compile_emdros_ubuntu_2204_image
+IMAGE_NAME = localhost/compile_emdros_ubuntu_2204_image
 
 CONTAINER_NAME = compile_emdros_ubuntu_2204_container
 
