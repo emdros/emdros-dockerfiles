@@ -1,4 +1,4 @@
-SUBDIRS = Ubuntu-20.04 Ubuntu-22.04
+SUBDIRS = Ubuntu-20.04 Ubuntu-22.04 Ubuntu-latest
 
 
 CLEANFILES = *~
