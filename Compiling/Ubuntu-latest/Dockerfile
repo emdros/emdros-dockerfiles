@@ -60,7 +60,8 @@ ADD https://raw.githubusercontent.com/emdros/emdros/master/build-deb.sh ./root/
 
 CMD export PATH=/root/opt/bin:${PATH} && \
     export EMDROS_CONFIGURE_SWITCHES && \
-    bash /root/build-deb.sh && \
+    export EMDROS_VERSION && \
+    bash /root/build-deb.sh ${EMDROS_VERSION} && \
     install -m 755 -d ${OUTPUT_DIR}/ && \
     install -m 644 /root/build/emdros-build-2/emdros/emdros*.deb ${OUTPUT_DIR}/
 
